@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>星空体育 · 杂志专题</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #faf5ea;
+      font-family: 'Georgia', 'Times New Roman', 'Noto Serif SC', serif;
+      color: #2c2b28;
+      line-height: 1.7;
+      padding: 0 20px;
+    }
+
+    .page {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 40px 0 60px;
+    }
+
+    /* Hero 区域 — 杂志跨页横幅感 */
+    .hero {
+      background: #e7ddd0;
+      padding: 48px 36px 42px;
+      border-radius: 32px;
+      margin-bottom: 48px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.03);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "✦";
+      font-size: 120px;
+      color: rgba(44,43,40,0.04);
+      position: absolute;
+      top: -20px;
+      right: 10px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 400;
+      letter-spacing: 2px;
+      color: #2b2925;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .hero .subhead {
+      font-size: 1.05rem;
+      color: #5e5b55;
+      border-left: 3px solid #b1a491;
+      padding-left: 18px;
+      font-style: italic;
+      max-width: 70%;
+    }
+
+    /* 背景说明块 — 类似杂志侧栏 */
+    .context-box {
+      background: #efe9de;
+      padding: 28px 30px;
+      border-radius: 20px;
+      margin: 32px 0 40px;
+      border-left: 6px solid #b6a890;
+      font-size: 0.98rem;
+    }
+
+    .context-box p {
+      margin-bottom: 6px;
+    }
+
+    .context-box strong {
+      font-weight: 600;
+      color: #3b3730;
+    }
+
+    /* 三段式正文 */
+    .section-block {
+      margin: 48px 0;
+    }
+
+    .section-block h2 {
+      font-size: 1.4rem;
+      font-weight: 400;
+      letter-spacing: 1px;
+      border-bottom: 1px dashed #d6cdbc;
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      color: #3b3730;
+    }
+
+    .section-block p {
+      margin-bottom: 18px;
+      text-align: justify;
+    }
+
+    .pullquote {
+      margin: 28px 0 20px;
+      padding: 18px 28px;
+      background: #f2ede3;
+      border-radius: 16px;
+      font-style: italic;
+      color: #4d4840;
+      font-size: 1.05rem;
+      border: 1px solid #ded5c4;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+      position: relative;
+    }
+
+    .pullquote::before {
+      content: "“";
+      font-size: 3.2rem;
+      color: #c4b8a5;
+      position: absolute;
+      left: 10px;
+      top: -5px;
+      line-height: 1;
+    }
+
+    .pullquote span {
+      display: block;
+      margin-top: 10px;
+      font-size: 0.92rem;
+      color: #7d766b;
+      font-style: normal;
+    }
+
+    /* 特点列表 — 更接近杂志小卡片 */
+    .feature-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      margin: 30px 0 20px;
+    }
+
+    .feature-item {
+      flex: 1 1 180px;
+      background: #f8f3ea;
+      padding: 20px 18px;
+      border-radius: 20px;
+      border: 1px solid #e4dccf;
+      transition: background 0.2s;
+    }
+
+    .feature-item:hover {
+      background: #efe7d8;
+    }
+
+    .feature-item .num {
+      font-size: 1.6rem;
+      color: #b3a48d;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .feature-item h3 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #3b3730;
+      margin-bottom: 6px;
+    }
+
+    .feature-item p {
+      font-size: 0.9rem;
+      color: #5b564d;
+    }
+
+    /* 提示框 / 引用块 — 用以收尾 */
+    .notice-card {
+      background: #e5dbcb;
+      border-radius: 28px;
+      padding: 30px 28px;
+      margin: 50px 0 30px;
+      text-align: center;
+    }
+
+    .notice-card p {
+      font-size: 1.05rem;
+      margin-bottom: 6px;
+    }
+
+    .notice-card .link-wrapper {
+      margin-top: 16px;
+      font-size: 1.1rem;
+    }
+
+    .notice-card a {
+      color: #3b352c;
+      text-decoration: none;
+      border-bottom: 2px solid #b7a68b;
+      font-weight: 500;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .notice-card a:hover {
+      border-bottom-color: #7a6d5a;
+      color: #1f1d19;
+    }
+
+    /* 页尾 */
+    .footer-note {
+      margin-top: 50px;
+      padding-top: 24px;
+      border-top: 1px solid #dbd1c0;
+      font-size: 0.88rem;
+      color: #7d766b;
+      text-align: center;
+      letter-spacing: 0.5px;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero { padding: 32px 20px; }
+      .hero h1 { font-size: 2rem; }
+      .hero .subhead { max-width: 100%; }
+      .feature-grid { flex-direction: column; }
+      .pullquote { padding: 16px 18px; }
+      .context-box { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+
+    <!-- Hero 区 -->
+    <div class="hero">
+      <h1>星空体育</h1>
+      <div class="subhead">一场关于运动、夜空与日常的对话</div>
+    </div>
+
+    <!-- 背景说明块：杂志专题惯用的“编者按/背景” -->
+    <div class="context-box">
+      <p><strong>专题背景 ·</strong> 我们习惯了在日光下奔跑、呐喊、流汗，却很少在星光下注视运动的另一种面貌。当夜色低垂，球场灯光亮起，跑道被月光拉长，那种沉静而有力的节奏，正是本期专题想要捕捉的片刻。</p>
+      <p>从城市公园的夜跑到山顶营地的微光，<strong>星空体育</strong> 试图串联起那些被忽略的运动场景——它们未必激烈，却足够真实。</p>
+    </div>
+
+    <!-- 三段自然介绍 -->
+    <div class="section-block">
+      <h2>星夜下的运动场</h2>
+      <p>晚风、塑胶跑道、头顶若隐若现的星子——这是很多人记忆里最舒服的运动时刻。没有白天的燥热与嘈杂，只有脚步与呼吸声。一位夜跑者曾告诉我，他喜欢在绕圈时辨认猎户座的位置，一圈、两圈，星星慢慢移动，自己也跟着完成了五公里。这种默契，是星空给运动者的礼物。</p>
+
+      <div class="pullquote">
+        运动不只是白天的狂欢，也可以是夜晚的独白。
+        <span>—— 一位夜跑爱好者的手记</span>
+      </div>
+
+      <p>在戈壁或高海拔营地，运动往往以徒步或登山的形式出现。当海拔上升、氧气变薄，每一步都需要更专注。而到达营地后，抬头就是银河。那种辽阔让身体的疲惫变成了一种安静的满足。星空体育关注的，正是这些与自然节奏同频的活动。</p>
+    </div>
+
+    <div class="section-block">
+      <h2>日常中的引力</h2>
+      <p>我们常说“动起来”，但坚持运动的理由往往不是数据，而是某个瞬间的触动。比如在篮球场上投进一个压哨球，全场欢呼；比如清晨瑜伽时窗外的曙光；比如和朋友在草地上玩飞盘，直到路灯亮起。这些场景里，运动从来不只是运动，它是连接人与人、人与环境的媒介。</p>
+
+      <!-- 特点小卡片 代替通用列表 -->
+      <div class="feature-grid">
+        <div class="feature-item">
+          <div class="num">01</div>
+          <h3>不赶时间</h3>
+          <p>夜晚的运动节奏往往更从容，不被日程追赶，只听从身体的感觉。</p>
+        </div>
+        <div class="feature-item">
+          <div class="num">02</div>
+          <h3>自然光影</h3>
+          <p>月光、星光、路灯——不同的光源让运动场景拥有独特的氛围。</p>
+        </div>
+        <div class="feature-item">
+          <div class="num">03</div>
+          <h3>共享记忆</h3>
+          <p>和伙伴一起在星空下流汗，那些画面往往比成绩数字更持久。</p>
+        </div>
+      </div>
+
+      <p>正因如此，<a href="https://com-cn-xingkong.com" style="color: #3b352c; text-decoration: underline; text-decoration-color: #b7a68b; text-underline-offset: 3px;">星空体育</a> 这个平台才显得特别——它把“运动”这个词从标准化的健身房里解放出来，放进更宽阔的夜色和旷野中。那里没有千篇一律的教程，只有每个人自己的步伐。</p>
+    </div>
+
+    <div class="section-block">
+      <h2>夜晚，也是主场</h2>
+      <p>如果你试过在晚上八点后走进一个社区的篮球场，会发现那里的气氛和白日完全不同。灯光把影子拉得很长，运球的声音格外清晰。没有旁观者，只有几个同样喜欢安静投篮的人。彼此不交谈，但每次空心入网，都会有人轻轻点头。这种默契不需要语言。</p>
+      <p>星空体育想保留的，就是这种质感。它不鼓吹“突破极限”或“蜕变人生”，而是记录运动中最平常、最自由的样貌——无论是一个人，还是一群人，只要在星空下动起来，就已经足够。</p>
+    </div>
+
+    <!-- 提示框 / 引用块，类似杂志页尾 teaser -->
+    <div class="notice-card">
+      <p>如果你想了解更多关于运动与夜空的故事，</p>
+      <p>可以常去 <a href="https://com-cn-xingkong.com">星空体育</a> 看看。</p>
+      <div class="link-wrapper">
+        <span style="font-style: italic; color: #5b564d;">—— 在星光下，找到你的节奏。</span>
+      </div>
+    </div>
+
+    <!-- 页尾 -->
+    <div class="footer-note">
+      星空体育 · 杂志特辑 · 夜与运动的散记
+    </div>
+
+  </div>
+</body>
+</html>
